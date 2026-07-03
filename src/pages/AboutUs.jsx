@@ -3,7 +3,7 @@ import '../styles/AboutUs.css';
 
 function AboutUs() {
   return (
-    <div className="about-container">
+    <div className="about-us-container">
       <div className="about-content">
         <h1>About Paradise Nursery</h1>
         

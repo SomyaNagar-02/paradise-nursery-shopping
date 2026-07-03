@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { removeFromCart, incrementQuantity, decrementQuantity } from '../redux/CartSlice';
+import { removeItem, updateQuantity, decrementQuantity } from '../redux/CartSlice';
 import '../styles/CartItem.css';
 
 function CartItem() {
@@ -12,11 +12,14 @@ function CartItem() {
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
 
   const handleRemoveFromCart = (id) => {
-    dispatch(removeFromCart(id));
+    dispatch(removeItem(id));
   };
 
   const handleIncrementQuantity = (id) => {
-    dispatch(incrementQuantity(id));
+    const item = cartItems.find(i => i.id === id);
+    if (item) {
+      dispatch(updateQuantity({ id, quantity: item.quantity + 1 }));
+    }
   };
 
   const handleDecrementQuantity = (id) => {

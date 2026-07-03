@@ -2,10 +2,13 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../App.css';
 
-function Home() {
+function Home({ onGetStarted }) {
   const navigate = useNavigate();
 
   const handleGetStarted = () => {
+    if (onGetStarted) {
+      onGetStarted();
+    }
     navigate('/plants');
   };
 
